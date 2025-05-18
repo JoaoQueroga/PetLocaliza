@@ -1,0 +1,280 @@
+body{
+    margin: 0px;
+    background-color: #DADADA;
+}
+
+.navbar{
+    height: 10vh;
+    color: #FFF;
+}
+
+.navbar-c1{
+    height: 70%;
+    background-color: #1f2f3a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-c2{
+    height: 30%;
+    background-color: #0c357f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar h1{
+    margin: 0px;
+}
+
+.navbar div{
+    padding: 0px 20px;
+}
+
+.view{
+    height: 90vh;
+    width: 100%;
+}
+
+.timeline-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.timeline-c1{
+    width: 20%;
+    height: 100%;
+    background-color: #FFF;
+}
+
+.timeline-c2{
+    width: 60%;
+    height: 100%;
+    overflow: auto;
+}
+
+.timeline-c3{
+    width: 20%;
+    height: 100%;
+    background-color: #FFF;
+}
+
+.timeline-c4{
+    width: 80%;
+    height: 100%;
+    background-color: #4234a8;
+}
+
+.login-main{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-grupo{
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.button-grupo{
+    width: 100%;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-rounded{
+    height: 35px;
+    width: 35px;
+}
+
+.btn-txt{
+    height: 35px;
+}
+
+.btn-1{
+    height: 35px;
+    background-color: #009d12;
+}
+
+.btn-1:hover{
+    background-color: #07b026;
+}
+
+.btn-2{
+    height: 35px;
+    background-color: #e5432f;
+}
+
+.btn-2:hover{
+    height: 35px;
+    background-color: #ec5d45;
+}
+
+.btn-3{
+    height: 35px;
+    background-color: #10397F;
+}
+
+.btn-3:hover{
+    background-color: #4234a8;
+}
+
+.btn-criar-publicacao{
+    height: 35px;
+    background-color: #009d12;
+}
+
+.btn-criar-publicacao:hover{
+    background-color: #07b026;
+}
+
+.text-info{
+    padding: 5px 0px;
+    font-size: 12px;
+    color: #1F2F3A;
+}
+
+.div-error{
+    padding: 10px;
+    color: #FF0000;
+    background-color: #f7d6d7;
+    border-radius: 5px;
+}
+
+.criar-post{
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.criar-post-inputs{
+    padding: 10px;
+}
+
+.criar-post-bts{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.criar-post-form{
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.slide-perfil{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.slide-perfil p{
+    margin: 0px;
+}
+
+.post{
+    background-color: #fff;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.post-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+
+.post-main{
+    display: flex;
+    gap: 10px;
+}
+
+.post-main-inf{
+    width: 50%;
+    height: 200px;
+}
+
+.post-main-inf label{
+    margin: 0px;
+}
+
+.post-main-inf h4{
+    margin: 0px;
+}
+
+.post-dados{
+    padding: 5px;
+    font-size: 12px;
+    background-color: #DDE1E6;
+    border-radius: 5px;
+    height: 20%;
+}
+
+.post-text{
+    padding: 5px;
+    font-size: 12px;
+    background-color: #DDE1E6;
+    border-radius: 5px;
+    height: 78%;
+    margin-top: 1%;
+}
+
+.image-container {
+    width: 50%;  /* Largura fixa */
+    height: 200px; /* Altura fixa */
+    background-color: #1F2F3A; /* Cor de fundo para as bordas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 5px;
+}
+  
+.imagen-post{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.post-footer{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Para navegadores baseados em WebKit (Chrome, Safari, Edge novo) */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Para Firefox */
+* {
+    scrollbar-width: none;
+}
+
+/* Para o Edge antigo e IE */
+html {
+    -ms-overflow-style: none;
+}
+
+@media screen and (max-width: 506px){
+    .timeline-c3{ display: none;}
+    .timeline-c1{ display: none;}
+    .timeline-c2{ width: 100%; }
+}

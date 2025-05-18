@@ -1,0 +1,30 @@
+.p-inputtext{
+    width: 100%;
+    border: 1px solid #DADADA;
+}
+
+.p-inputtext:focus{
+    box-shadow: none;
+    border: 1px solid #1F2F3A;
+}
+
+.p-button{
+    border: none;
+}
+
+.p-button:focus{
+    box-shadow: none;
+    border: none;
+}
+
+.p-dropdown{
+    width: 100%;
+    height: 45px;
+    border: 1px solid #DADADA;
+}
+
+.p-dropdown:not(.p-disabled).p-focus{
+    box-shadow: none;
+    outline: none;
+    border: 1px solid #1F2F3A;
+}
