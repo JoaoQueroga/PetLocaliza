@@ -120,7 +120,10 @@ export default function Navbar() {
                     {
                         logado ?
                             <div style={{display: "flex", alignItems: "center", justifyContent: "center", gap: "15px"}}>
-                                <p>{getPayloadToken().nome}</p>
+                                <div style={{textAlign: "right"}}>
+                                    <p style={{margin: "0px"}}>{getPayloadToken().nome}</p>
+                                    <p style={{margin: "0px", fontSize: "10px"}}>{getPayloadToken().regiao_nome}</p>
+                                </div>
                                 <Button icon="pi pi-user" rounded severity="info" aria-label="User" className="btn-1 btn-rounded" onClick={()=>setPainelPerfil(true)}/>
                             </div>
                         : 

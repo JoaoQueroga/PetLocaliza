@@ -42,12 +42,17 @@ export default function PostForm (props) {
         api.post('post/', formData)
         .then(()=>{
             setPainelCriar(false);
+            limparForm();
             props.carregar();
         })
     };
 
     function cancelarPost() {
         setPainelCriar(false);
+        limparForm();
+    }
+
+    function limparForm() {
         setImagem(null);
         setNome("");
         setTexto("");

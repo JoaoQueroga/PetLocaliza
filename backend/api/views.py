@@ -16,6 +16,7 @@ def get_token_acesso(usuario):
     access_token['id'] = usuario.id
     access_token['nome'] = usuario.nome
     access_token['regiao'] = usuario.regiao.id
+    access_token['regiao_nome'] = usuario.regiao.nome
     access_token['email'] = usuario.user.username
                 
     return str(access_token)

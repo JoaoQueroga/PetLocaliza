@@ -10,7 +10,7 @@ body{
 
 .navbar-c1{
     height: 70%;
-    background-color: #1f2f3a;
+    background-color: #16385B;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,7 +18,7 @@ body{
 
 .navbar-c2{
     height: 30%;
-    background-color: #0c357f;
+    background-color: #EC7129;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -65,7 +65,7 @@ body{
 .timeline-c4{
     width: 80%;
     height: 100%;
-    background-color: #4234a8;
+    background-color: #FFF;
 }
 
 .login-main{
@@ -119,7 +119,7 @@ body{
 
 .btn-3{
     height: 35px;
-    background-color: #10397F;
+    background-color: #16385B;
 }
 
 .btn-3:hover{
@@ -237,7 +237,7 @@ body{
 .image-container {
     width: 50%;  /* Largura fixa */
     height: 200px; /* Altura fixa */
-    background-color: #1F2F3A; /* Cor de fundo para as bordas */
+    background-color: #16385B; /* Cor de fundo para as bordas */
     display: flex;
     align-items: center;
     justify-content: center;
