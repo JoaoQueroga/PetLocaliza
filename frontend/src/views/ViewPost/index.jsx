@@ -111,7 +111,7 @@ export default function ViewPost() {
                     <div className="timeline-c4-comentarios">
                         <div className="timeline-c4-comentarios-list">
                             <div className='comentarios-list-top'>
-                                <p style={{margin: "0px"}}><b>2 Comentários</b></p>
+                                <p style={{margin: "0px"}}><b>{comentarios.length} Comentários</b></p>
                             </div>
                             <div className='comentarios-list-main'>
                                 {

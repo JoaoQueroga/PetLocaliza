@@ -86,7 +86,7 @@ export default function Timeline() {
                             <div className='post-main'>
                                 <div className='post-main-inf'>
                                     <div className='post-dados'>
-                                        <label style={{fontSize:"10px", margin:"0px"}}>nome</label> 
+                                        <label style={{fontSize:"10px", margin:"0px"}}>Nome do pet</label> 
                                         <h4>{post.titulo || "Desconhecido"}</h4>
                                     </div>
                                     <div className='post-text'>
