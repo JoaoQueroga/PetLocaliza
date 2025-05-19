@@ -64,6 +64,7 @@ class Post(models.Model):
 
 class Comentario(models.Model):
     post = models.ForeignKey(Post, on_delete=models.PROTECT)
+    usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT, null=True, blank=True)
     texto = models.TextField(null=True, blank=True)
     imagem = models.ImageField(upload_to='posts/', null=True, blank=True)
 

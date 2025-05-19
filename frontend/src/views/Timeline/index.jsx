@@ -86,7 +86,7 @@ export default function Timeline() {
                             <div className='post-main'>
                                 <div className='post-main-inf'>
                                     <div className='post-dados'>
-                                        <label>nome</label> 
+                                        <label style={{fontSize:"10px", margin:"0px"}}>nome</label> 
                                         <h4>{post.titulo || "Desconhecido"}</h4>
                                     </div>
                                     <div className='post-text'>
@@ -105,11 +105,11 @@ export default function Timeline() {
                             <div className='post-footer'>
                                 <Button 
                                     type="button" 
-                                    label="Comentários" 
+                                    label={post.qtd_comentarios ? "Comentários": "Comentar"} 
                                     icon="pi pi-comment" 
                                     outlined 
-                                    badge="2"
-                                    badgeClassName="p-badge-danger" 
+                                    badge={post.qtd_comentarios}
+                                    badgeClassName="p-badge-info" 
                                     onClick={()=>ir_post(post)}
                                 />
                             </div>

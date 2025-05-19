@@ -65,7 +65,28 @@ class PostViewSet(viewsets.ModelViewSet):
         if self.action == 'list':
             return serializers.PostListSerializer
         return serializers.PostSerializer
+    
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.delete()
+        return Response({"message": "Objeto excluído"}, status=status.HTTP_204_NO_CONTENT)
 
 class ComentarioViewSet(viewsets.ModelViewSet):
     queryset = models.Comentario.objects.filter(ativo=True).order_by('-criado_em')
-    serializer_class = serializers.ComentarioSerializer
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return serializers.ComentarioListSerializer
+        return serializers.ComentarioSerializer
+
+    def get_queryset(self):
+        post = self.request.query_params.get('post', None)
+        if post:
+            queryset = models.Comentario.objects.select_related('post', 'usuario').filter(ativo=True, post=int(post)).order_by('-criado_em')
+        else:
+            queryset = models.Comentario.objects.select_related('post', 'usuario').filter(ativo=True, post=int(post)).order_by('-criado_em')
+        return queryset
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.delete()
+        return Response({"message": "Objeto excluído"}, status=status.HTTP_204_NO_CONTENT)
