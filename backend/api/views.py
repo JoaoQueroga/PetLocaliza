@@ -10,6 +10,10 @@ class RegiaoViewSet(viewsets.ModelViewSet):
     queryset = models.Regiao.objects.all()
     serializer_class = serializers.RegiaoSerializer
 
+class MensagemSistemaViewSet(viewsets.ModelViewSet):
+    queryset = models.MensagemSistema.objects.filter(ativo=True).order_by('?')[:4]
+    serializer_class = serializers.MensagemSistemaSerializer
+
 def get_token_acesso(usuario):
     refresh = RefreshToken.for_user(usuario.user)
     access_token = refresh.access_token
@@ -60,11 +64,35 @@ class Login(APIView):
             return Response({"message": str(erro)}, status=status.HTTP_400_BAD_REQUEST)
 
 class PostViewSet(viewsets.ModelViewSet):
-    queryset = models.Post.objects.select_related('usuario').filter(ativo=True).order_by('-criado_em')
     def get_serializer_class(self):
         if self.action == 'list':
             return serializers.PostListSerializer
+        elif self.action == 'retrieve':
+            return serializers.PostListSerializer
         return serializers.PostSerializer
+    
+    def get_queryset(self):
+        p_user = self.request.query_params.get('user', None)
+        
+        user = self.request.user
+        usuario = None
+        if hasattr(user, 'usuario'):
+            usuario = user.usuario
+        
+        if p_user == 'true':
+            ## retorna os posts do usuario
+            if usuario:
+                queryset = models.Post.objects.select_related('usuario').filter(ativo=True, usuario=usuario).order_by('-criado_em')
+            else:
+                queryset = []
+        else:
+            ## se tiver logado só retorna os da sua região
+            if usuario:
+                print(usuario.regiao)
+                queryset = models.Post.objects.select_related('usuario').filter(ativo=True, usuario__regiao=usuario.regiao).order_by('-criado_em')
+            else:
+                queryset = models.Post.objects.select_related('usuario').filter(ativo=True).order_by('-criado_em')
+        return queryset
     
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -72,7 +100,6 @@ class PostViewSet(viewsets.ModelViewSet):
         return Response({"message": "Objeto excluído"}, status=status.HTTP_204_NO_CONTENT)
 
 class ComentarioViewSet(viewsets.ModelViewSet):
-    queryset = models.Comentario.objects.filter(ativo=True).order_by('-criado_em')
     def get_serializer_class(self):
         if self.action == 'list':
             return serializers.ComentarioListSerializer

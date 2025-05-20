@@ -80,3 +80,15 @@ class Comentario(models.Model):
     def delete(self, *args, **kwargs):
         self.ativo = False
         self.save()
+
+class MensagemSistema(models.Model):
+    texto = models.TextField()
+    ativo = models.BooleanField(default=True)
+    def __str__(self):
+        return self.texto
+    class Meta:
+        verbose_name = "Mensagem do Sistema"
+        verbose_name_plural = "Mensagens do Sistema"
+    def delete(self, *args, **kwargs):
+        self.ativo = False
+        self.save()

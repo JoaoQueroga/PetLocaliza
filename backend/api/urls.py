@@ -3,9 +3,10 @@ from rest_framework.routers import DefaultRouter
 from . import views
 
 router = DefaultRouter()
-router.register(r'regiao', views.RegiaoViewSet)
-router.register(r'post', views.PostViewSet)
-router.register(r'comentario', views.ComentarioViewSet)
+router.register(r'regiao', views.RegiaoViewSet, basename="Regiões")
+router.register(r'post', views.PostViewSet, basename="Posts")
+router.register(r'comentario', views.ComentarioViewSet, basename="Comentários")
+router.register(r'mensagem-sistema', views.MensagemSistemaViewSet, basename="Mensagens do Sistema")
 
 urlpatterns = [
     path('', include(router.urls)),

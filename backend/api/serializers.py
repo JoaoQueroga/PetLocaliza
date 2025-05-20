@@ -11,6 +11,11 @@ class PostSerializer(serializers.ModelSerializer):
         model = models.Post
         fields = '__all__'
 
+class MensagemSistemaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.MensagemSistema
+        fields = ['texto']
+
 class PostListSerializer(serializers.ModelSerializer):
     usuario = serializers.CharField(source='usuario.nome', read_only=True)
     criado_em = serializers.DateTimeField(format="%d/%m/%Y %H:%M", required=False)

@@ -3,6 +3,10 @@ body{
     background-color: #DADADA;
 }
 
+p{
+    margin: 0px;
+}
+
 .navbar{
     height: 10vh;
     color: #FFF;
@@ -230,14 +234,14 @@ body{
 
 .post-dados{
     padding: 0px 5px;
-    background-color: #DDE1E6;
+    background-color: #f7ead9;
     border-radius: 5px;
     height: 20%;
 }
 
 .post-text{
     padding: 5px;
-    background-color: #DDE1E6;
+    background-color: #f7ead9;
     border-radius: 5px;
     height: 78%;
     margin-top: 1%;
@@ -307,14 +311,14 @@ body{
 
 .post-dados-post{
     padding: 0px 5px;
-    background-color: #DDE1E6;
+    background-color: #f7ead9;
     border-radius: 5px;
     height: 20%;
 }
 
 .post-text-post{
     padding: 5px;
-    background-color: #DDE1E6;
+    background-color: #f7ead9;
     border-radius: 5px;
     height: 78%;
     margin-top: 1%;
@@ -345,7 +349,7 @@ body{
 }
 
 .post-comentario{
-    background-color: #DDE1E6;
+    background-color: #fff5de;
     padding: 5px;
     border-radius: 5px;
     margin-top: 5px;
@@ -363,6 +367,32 @@ body{
     overflow: auto;
     height: 95%;
 }
+
+.minhas-pub-top{
+    height: 8%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.minhas-pub-main{
+    height: 92%;
+    padding: 0px 10px 10px 10px;
+    overflow: auto;
+    background-color: transparent;
+}
+
+.minhas-pub{
+    background-color: #fff5de;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.minhas-pub:hover{ background-color: #7ee2f5;}
 
 /* Para navegadores baseados em WebKit (Chrome, Safari, Edge novo) */
 ::-webkit-scrollbar {

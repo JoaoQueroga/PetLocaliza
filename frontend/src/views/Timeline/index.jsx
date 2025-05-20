@@ -15,21 +15,44 @@ import img_r from '../../assets/img_r.png';
 import img_n from '../../assets/img_n.png';
 
 import { useNavigate } from 'react-router-dom';
+import Informativos from '../../components/Informativos';
 
 export default function Timeline() {
 
     const { logado } = useContext(ApiContext);
 
     const [posts, setPosts] = useState([]);
+    const [meusPosts, setMeusPosts] = useState([]);
     const [carregando, setCarregando] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        carregarPosts();
-    }, []);
+        iniciarTimeline();
+    }, [logado]);
+
+    function iniciarTimeline() {
+        if (logado){
+            carregarMeusPosts();
+            carregarPosts();
+        }else{
+            carregarPublicPosts();
+            setMeusPosts([]);
+        }
+    }
 
     function carregarPosts() {
+        setCarregando(true);
+        let config = {headers: {"Authorization": `Bearer ${getToken()}`}}
+        api.get('/post/', config)
+        .then((res) =>{
+            setPosts(res.data);
+        }).catch((erro) =>{
+            console.error(erro)
+        }).finally(()=>setCarregando(false))
+    }
+
+    function carregarPublicPosts() {
         setCarregando(true);
         api.get('/post/')
         .then((res) =>{
@@ -39,29 +62,39 @@ export default function Timeline() {
         }).finally(()=>setCarregando(false))
     }
 
-    function ir_post(post) {
-        navigate('/post', {state: post})
+    function carregarMeusPosts() {
+        let config = {headers: {"Authorization": `Bearer ${getToken()}`}}
+        api.get('/post/?user=true', config)
+        .then((res) =>{
+            setMeusPosts(res.data);
+        }).catch((erro) =>{
+            console.error(erro)
+        })
+    }
+
+    function ir_post(post, mode) { // 1: comentarios // 2: edit
+        navigate('/post', {state: { post: post, mode: mode }})
     }
 
     return (
         <div className="view">
             <div className="timeline-container">
                 <div className="timeline-c1">
-
+                   <Informativos/>
                 </div>
                 <div className="timeline-c2">
                 {
                     logado ?
                     <div>
-                        <PostForm carregar={carregarPosts}/>
+                        <PostForm carregar={iniciarTimeline}/>
                     </div>
                     :
                     <div className="criar-post">
                         <div>
                             <Button label="Criar Publicação" className='btn-criar-publicacao' disabled/>
-                            <div className='text-info'>Faça o login para criar publicações</div>
+                            <div className='text-info'>Faça login para criar publicações e ver o que está acontecendo na sua região</div>
                         </div>
-                        <Button icon="pi pi-refresh" rounded severity="info" aria-label="User" className="btn-3 btn-rounded"/>
+                        <Button icon="pi pi-refresh" rounded severity="info" aria-label="User" className="btn-3 btn-rounded" onClick={iniciarTimeline}/>
                     </div>
                 }
                 <div>
@@ -110,7 +143,7 @@ export default function Timeline() {
                                     outlined 
                                     badge={post.qtd_comentarios}
                                     badgeClassName="p-badge-info" 
-                                    onClick={()=>ir_post(post)}
+                                    onClick={()=>ir_post(post, 1)}
                                 />
                             </div>
                         </div>
@@ -118,7 +151,27 @@ export default function Timeline() {
                 </div>
                 </div>
                 <div className="timeline-c3">
-
+                    <div className='minhas-pub-top'>
+                        <p>Minhas Publicações</p>
+                    </div>
+                    <div className='minhas-pub-main'>
+                    {
+                        meusPosts.map((post, index)=>(
+                            <div key={index} className="minhas-pub" onClick={()=>ir_post(post, 2)}>
+                                <div>
+                                    <p style={{margin: "0px", fontWeight: "bold"}}>{post.usuario}</p>
+                                    <p style={{margin: "0px", fontSize: "10px", fontWeight: "bold", color: "#787e75"}}>{post.criado_em}</p>
+                                </div>
+                                <div style={{fontSize:"14px"}}>
+                                    {post.texto}
+                                </div>
+                                <div style={{marginTop: "10px", fontWeight: 'bold', color: "#EC7129", fontSize:"14px"}}>
+                                    {post.qtd_comentarios} Comentários
+                                </div>
+                            </div>
+                        ))
+                    }
+                    </div>
                 </div>
             </div>
         </div>
