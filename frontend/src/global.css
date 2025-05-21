@@ -234,14 +234,14 @@ p{
 
 .post-dados{
     padding: 0px 5px;
-    background-color: #f7ead9;
+    background-color: #f4fad2;
     border-radius: 5px;
     height: 20%;
 }
 
 .post-text{
     padding: 5px;
-    background-color: #f7ead9;
+    background-color: #f4fad2;
     border-radius: 5px;
     height: 78%;
     margin-top: 1%;
@@ -311,14 +311,14 @@ p{
 
 .post-dados-post{
     padding: 0px 5px;
-    background-color: #f7ead9;
+    background-color: #f4fad2;
     border-radius: 5px;
     height: 20%;
 }
 
 .post-text-post{
     padding: 5px;
-    background-color: #f7ead9;
+    background-color: #f4fad2;
     border-radius: 5px;
     height: 78%;
     margin-top: 1%;
@@ -349,7 +349,7 @@ p{
 }
 
 .post-comentario{
-    background-color: #fff5de;
+    background-color: #d3ffff;
     padding: 5px;
     border-radius: 5px;
     margin-top: 5px;
@@ -385,7 +385,7 @@ p{
 }
 
 .minhas-pub{
-    background-color: #fff5de;
+    background-color: #f4fad2;
     padding: 5px;
     margin-bottom: 5px;
     border-radius: 5px;
